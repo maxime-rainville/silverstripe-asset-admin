@@ -12,6 +12,7 @@ Feature: Manage file permissions
       And a page "Gallery" containing an image "assets/folder3/file1.jpg"
       And I am logged in with "ADMIN" permissions
       And I go to "/admin/assets"
+      And I print error
 
   @onlyme
   Scenario: I can limit edit permissions to admins

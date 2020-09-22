@@ -422,4 +422,12 @@ JS;
         assertNotNull($element, sprintf('HTML field "%s" not found', $locator));
         return $element;
     }
+
+    /**
+     * @When /^I print error$/
+     */
+    public function iPrintError()
+    {
+        var_dump($this->getMainContext()->getSession()->evaluateScript("testing.errors"));
+    }
 }
