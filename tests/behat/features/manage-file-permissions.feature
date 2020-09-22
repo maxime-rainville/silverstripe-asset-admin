@@ -13,6 +13,7 @@ Feature: Manage file permissions
       And I am logged in with "ADMIN" permissions
       And I go to "/admin/assets"
 
+  @onlyme
   Scenario: I can limit edit permissions to admins
     When I check the folder named "folder1" in the gallery
     Then I should see an ".bulk-actions__action[value='edit']" element

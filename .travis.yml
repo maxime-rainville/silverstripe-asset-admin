@@ -29,22 +29,8 @@ env:
 
 matrix:
   include:
-    - php: 7.1
-      env: PHPUNIT_TEST=1
     - php: 7.2
       env: BEHAT_TEST=1
-    - php: 7.3
-      env: PHPUNIT_TEST=1
-    - php: 7.4
-      env: PHPUNIT_TEST=1
-    - php: 7.1
-      env: NPM_TEST=1
-    - php: 7.2
-      env: PHPCS_TEST=1
-    - php: 7.3
-      env:
-        - DB=PGSQL
-        - PHPUNIT_TEST=1
 
 before_script:
 # Extra $PATH
@@ -83,7 +69,7 @@ script:
   - if [[ $NPM_TEST ]]; then git diff --name-status --relative=client; fi
   - if [[ $NPM_TEST ]]; then yarn run test; fi
   - if [[ $NPM_TEST ]]; then yarn run lint; fi
-  - if [[ $BEHAT_TEST ]]; then vendor/bin/behat @asset-admin; fi
+  - if [[ $BEHAT_TEST ]]; then vendor/bin/behat @asset-admin --tag onlyme; fi
   - if [[ $PHPCS_TEST ]]; then composer run-script lint; fi
 
 after_failure:
